@@ -1,0 +1,1043 @@
+/**
+ * css-api
+ * BSD 2-Clause License
+ * Copyright (c) Jane Ori, PropJockey, 2024
+ */
+
+@property --api-id { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-state { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-state-idle { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-state-loading { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-state-reading { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-state-complete { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-handler { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-transfer { syntax: "<integer>"; inherits: true; initial-value: 0; }
+
+@property --api-response-w-px { syntax: "<length>"; inherits: true; initial-value: 0px; }
+@property --api-response-h-px { syntax: "<length>"; inherits: true; initial-value: 0px; }
+@property --api-response-w { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-response-h { syntax: "<integer>"; inherits: true; initial-value: 0; }
+
+@property --api-unpack-w-90000 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-unpack-w-09000 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-unpack-w-00900 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-unpack-w-00090 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-unpack-w-00009 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+
+@property --api-unpack-h-90000 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-unpack-h-09000 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-unpack-h-00900 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-unpack-h-00090 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-unpack-h-00009 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+
+@property --api-1-in-progress { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-1-complete { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-1-response-0 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-1-response-1 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-1-response-2 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-1-response-3 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-1-response-4 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-1-response-5 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-1-response-6 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-1-response-7 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-1-response-8 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-1-response-9 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-2-in-progress { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-2-complete { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-2-response-0 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-2-response-1 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-2-response-2 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-2-response-3 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-2-response-4 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-2-response-5 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-2-response-6 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-2-response-7 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-2-response-8 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-2-response-9 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-3-in-progress { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-3-complete { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-3-response-0 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-3-response-1 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-3-response-2 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-3-response-3 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-3-response-4 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-3-response-5 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-3-response-6 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-3-response-7 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-3-response-8 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-3-response-9 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-4-in-progress { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-4-complete { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-4-response-0 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-4-response-1 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-4-response-2 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-4-response-3 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-4-response-4 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-4-response-5 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-4-response-6 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-4-response-7 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-4-response-8 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-4-response-9 { syntax: "<integer>"; inherits: true; initial-value: 0; }
+
+.css-api {
+  pointer-events: none;
+  &, * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+  &:has(> .api-debug-on) {
+    .api-response::before {
+      counter-reset: w var(--api-response-w) h var(--api-response-h);
+      content: "w: " counter(w) " h: " counter(h);
+      background: white;
+      position: absolute;
+      left: var(--api-offscreen);
+      top: var(--api-offscreen);
+    }
+    .api-debug-on::before,
+    .api-handler::before {
+      --counter-resets: 
+        api-transfer var(--api-transfer, 0)
+        api-unpack-w-90000 var(--api-unpack-w-90000)
+        api-unpack-w-09000 var(--api-unpack-w-09000)
+        api-unpack-w-00900 var(--api-unpack-w-00900)
+        api-unpack-w-00090 var(--api-unpack-w-00090)
+        api-unpack-w-00009 var(--api-unpack-w-00009)
+        api-unpack-h-90000 var(--api-unpack-h-90000)
+        api-unpack-h-09000 var(--api-unpack-h-09000)
+        api-unpack-h-00900 var(--api-unpack-h-00900)
+        api-unpack-h-00090 var(--api-unpack-h-00090)
+        api-unpack-h-00009 var(--api-unpack-h-00009)
+      ;
+      --content: 
+        "\0a--api-transfer: " counter(api-transfer)
+        "\0a--api-unpack-w-90000: " counter(api-unpack-w-90000)
+        "\0a--api-unpack-w-09000: " counter(api-unpack-w-09000)
+        "\0a--api-unpack-w-00900: " counter(api-unpack-w-00900)
+        "\0a--api-unpack-w-00090: " counter(api-unpack-w-00090)
+        "\0a--api-unpack-w-00009: " counter(api-unpack-w-00009)
+        "\0a--api-unpack-h-90000: " counter(api-unpack-h-90000)
+        "\0a--api-unpack-h-09000: " counter(api-unpack-h-09000)
+        "\0a--api-unpack-h-00900: " counter(api-unpack-h-00900)
+        "\0a--api-unpack-h-00090: " counter(api-unpack-h-00090)
+        "\0a--api-unpack-h-00009: " counter(api-unpack-h-00009)
+      ;
+    }
+    .api-debug-on {
+      position: absolute;
+      top: 60%;
+      &::before {
+        counter-reset: handler var(--api-handler-hoist, 0)
+          var(--counter-resets)
+          api-id var(--api-id-hoist, 0)
+          api-state var(--api-state-hoist, 0)
+          api-state-idle var(--api-state-idle, 0)
+          api-state-loading var(--api-state-loading, 0)
+          api-state-reading var(--api-state-reading, 0)
+          api-state-complete var(--api-state-complete, 0)
+          ;
+        content: "handler: " counter(handler)
+          var(--content)
+          "\0a--api-id: " counter(api-id)
+          "\0a--api-state: " counter(api-state)
+          "\0a--api-state-idle: " counter(api-state-idle)
+          "\0a--api-state-loading: " counter(api-state-loading)
+          "\0a--api-state-reading: " counter(api-state-reading)
+          "\0a--api-state-complete: " counter(api-state-complete)
+          ;
+        white-space: pre;
+      }
+    }
+    .api-handler::before {
+      margin-top: 20rem;
+      display: block;
+      counter-reset: do var(--api-handler-do-transfer) var(--counter-resets);
+      content: "do: " counter(do) var(--content);
+      white-space: pre;
+      background: white;
+    }
+    .api-handler .api-cpu {
+      background: hsla(calc(30deg * var(--api-handler, 0)), 50%, 50%, 50%);
+      *::after {
+        position: absolute;
+        bottom: calc(100px + var(--api-transfer-match, 0) * 1rem);
+        right: 100px;
+        counter-reset: tr var(--api-transfer)
+          match var(--api-transfer-match, 0);
+        content: counter(tr) " match: " counter(match);
+      }
+    }
+    .api-id-1:where(.api-trigger)::before {
+      counter-reset: api-X-in-progress var(--api-1-in-progress, 0)
+        api-X-complete var(--api-1-complete, 0)
+        api-X-response-0 var(--api-1-response-0, 0)
+        api-X-response-1 var(--api-1-response-1, 0)
+        api-X-response-2 var(--api-1-response-2, 0)
+        api-X-response-3 var(--api-1-response-3, 0)
+        api-X-response-4 var(--api-1-response-4, 0)
+        api-X-response-5 var(--api-1-response-5, 0)
+        api-X-response-6 var(--api-1-response-6, 0)
+        api-X-response-7 var(--api-1-response-7, 0)
+        api-X-response-8 var(--api-1-response-8, 0)
+        api-X-response-9 var(--api-1-response-9, 0)
+        api-id 1
+        ;
+    }
+    .api-id-2:where(.api-trigger)::before {
+      counter-reset: api-X-in-progress var(--api-2-in-progress, 0)
+        api-X-complete var(--api-2-complete, 0)
+        api-X-response-0 var(--api-2-response-0, 0)
+        api-X-response-1 var(--api-2-response-1, 0)
+        api-X-response-2 var(--api-2-response-2, 0)
+        api-X-response-3 var(--api-2-response-3, 0)
+        api-X-response-4 var(--api-2-response-4, 0)
+        api-X-response-5 var(--api-2-response-5, 0)
+        api-X-response-6 var(--api-2-response-6, 0)
+        api-X-response-7 var(--api-2-response-7, 0)
+        api-X-response-8 var(--api-2-response-8, 0)
+        api-X-response-9 var(--api-2-response-9, 0)
+        api-id 2
+        ;
+    }
+    .api-id-3:where(.api-trigger)::before {
+      counter-reset: api-X-in-progress var(--api-3-in-progress, 0)
+        api-X-complete var(--api-3-complete, 0)
+        api-X-response-0 var(--api-3-response-0, 0)
+        api-X-response-1 var(--api-3-response-1, 0)
+        api-X-response-2 var(--api-3-response-2, 0)
+        api-X-response-3 var(--api-3-response-3, 0)
+        api-X-response-4 var(--api-3-response-4, 0)
+        api-X-response-5 var(--api-3-response-5, 0)
+        api-X-response-6 var(--api-3-response-6, 0)
+        api-X-response-7 var(--api-3-response-7, 0)
+        api-X-response-8 var(--api-3-response-8, 0)
+        api-X-response-9 var(--api-3-response-9, 0)
+        api-id 3
+        ;
+    }
+    .api-id-4:where(.api-trigger)::before {
+      counter-reset: api-X-in-progress var(--api-4-in-progress, 0)
+        api-X-complete var(--api-4-complete, 0)
+        api-X-response-0 var(--api-4-response-0, 0)
+        api-X-response-1 var(--api-4-response-1, 0)
+        api-X-response-2 var(--api-4-response-2, 0)
+        api-X-response-3 var(--api-4-response-3, 0)
+        api-X-response-4 var(--api-4-response-4, 0)
+        api-X-response-5 var(--api-4-response-5, 0)
+        api-X-response-6 var(--api-4-response-6, 0)
+        api-X-response-7 var(--api-4-response-7, 0)
+        api-X-response-8 var(--api-4-response-8, 0)
+        api-X-response-9 var(--api-4-response-9, 0)
+        api-id 4
+        ;
+    }
+    :where(.api-trigger)::before {
+      background: lime;
+      right: 0px;
+      top: 1rem;
+      padding: 1rem;
+      position: absolute;
+      pointer-events: none;
+      content: "--api-" counter(api-id) "-in-progress: " counter(api-X-in-progress)
+        "\0a--api-" counter(api-id) "-complete: " counter(api-X-complete)
+        "\0a--api-" counter(api-id) "-response-0: " counter(api-X-response-0)
+        "\0a--api-" counter(api-id) "-response-1: " counter(api-X-response-1)
+        "\0a--api-" counter(api-id) "-response-2: " counter(api-X-response-2)
+        "\0a--api-" counter(api-id) "-response-3: " counter(api-X-response-3)
+        "\0a--api-" counter(api-id) "-response-4: " counter(api-X-response-4)
+        "\0a--api-" counter(api-id) "-response-5: " counter(api-X-response-5)
+        "\0a--api-" counter(api-id) "-response-6: " counter(api-X-response-6)
+        "\0a--api-" counter(api-id) "-response-7: " counter(api-X-response-7)
+        "\0a--api-" counter(api-id) "-response-8: " counter(api-X-response-8)
+        "\0a--api-" counter(api-id) "-response-9: " counter(api-X-response-9)
+        ;
+      white-space: pre;
+    }
+  }
+
+  .api-fetch {
+    --api-offscreen: 100100px;
+    position: fixed;
+    left: calc(var(--api-offscreen) * -1);
+    top: calc(var(--api-offscreen) * -1);
+    /* umbrealla reset of our vars */
+    --api-transfer: 0;
+    --api-response-w-px: 0px;
+    --api-response-w: 0;
+    --api-unpack-w-90000: 0;
+    --api-unpack-w-09000: 0;
+    --api-unpack-w-00900: 0;
+    --api-unpack-w-00090: 0;
+    --api-unpack-w-00009: 0;
+    --api-response-h-px: 0px;
+    --api-response-h: 0;
+    --api-unpack-h-90000: 0;
+    --api-unpack-h-09000: 0;
+    --api-unpack-h-00900: 0;
+    --api-unpack-h-00090: 0;
+    --api-unpack-h-00009: 0;
+
+    @container (style(--api-id: 0) OR style(--api-state-complete: 1)) {
+      display: none;
+    }
+
+    &::after {
+      content: var(--api-fetch, none);
+      display: block;
+      font-size: 0;
+    }
+
+    .api-parse {
+      container: api-response / size;
+      position: absolute;
+      inset: 0px;
+    }
+
+    .api-response {
+      position: absolute;
+      --api-response-w-px: 100cqw;
+      --api-response-h-px: 100cqh;
+
+      /* raw data */
+      --api-response-w: calc(tan(atan2(var(--api-response-w-px), 1px)));
+      --api-response-h: calc(tan(atan2(var(--api-response-h-px), 1px)));
+      --api-response-ready: min(1,
+        min(1, var(--api-response-w)) +
+        min(1, var(--api-response-h))
+      );
+
+      /* unpack w into 10s places for CPU hoist to root */
+      --api-unpack-w-90000: calc(
+        var(--api-response-w) / 10000 - 0.5
+      );
+      --api-unpack-w-09000: calc(
+        (
+          var(--api-response-w)
+          - var(--api-unpack-w-90000) * 10000
+        ) / 1000 - 0.5
+      );
+      --api-unpack-w-00900: calc(
+        (
+          var(--api-response-w)
+          - var(--api-unpack-w-90000) * 10000
+          - var(--api-unpack-w-09000) * 1000
+        ) / 100 - 0.5
+      );
+      --api-unpack-w-00090: calc(
+        (
+          var(--api-response-w)
+          - var(--api-unpack-w-90000) * 10000
+          - var(--api-unpack-w-09000) * 1000
+          - var(--api-unpack-w-00900) * 100
+        ) / 10 - 0.5
+      );
+      --api-unpack-w-00009: calc(
+        (
+          var(--api-response-w)
+          - var(--api-unpack-w-90000) * 10000
+          - var(--api-unpack-w-09000) * 1000
+          - var(--api-unpack-w-00900) * 100
+          - var(--api-unpack-w-00090) * 10
+        ) - 0.5
+      );
+
+      /* unpack h into 10s places for CPU hoist to root */
+      --api-unpack-h-90000: calc(
+        var(--api-response-h) / 10000 - 0.5
+      );
+      --api-unpack-h-09000: calc(
+        (
+          var(--api-response-h)
+          - var(--api-unpack-h-90000) * 10000
+        ) / 1000 - 0.5
+      );
+      --api-unpack-h-00900: calc(
+        (
+          var(--api-response-h)
+          - var(--api-unpack-h-90000) * 10000
+          - var(--api-unpack-h-09000) * 1000
+        ) / 100 - 0.5
+      );
+      --api-unpack-h-00090: calc(
+        (
+          var(--api-response-h)
+          - var(--api-unpack-h-90000) * 10000
+          - var(--api-unpack-h-09000) * 1000
+          - var(--api-unpack-h-00900) * 100
+        ) / 10 - 0.5
+      );
+      --api-unpack-h-00009: calc(
+        (
+          var(--api-response-h)
+          - var(--api-unpack-h-90000) * 10000
+          - var(--api-unpack-h-09000) * 1000
+          - var(--api-unpack-h-00900) * 100
+          - var(--api-unpack-h-00090) * 10
+        ) - 0.5
+      );
+    }
+
+    .api-handler {
+      position: absolute;
+      left: var(--api-offscreen);
+      top: var(--api-offscreen);
+      width: 100vw;
+      height: 100vh;
+      --api-handler-do-transfer: max(0, min(1, var(--api-handler-hoist, 0)));
+      --api-transfer: calc(
+        (1 + max(-1, 100000 * min(
+          var(--api-handler-hoist, 0) - 1,
+          1 - var(--api-handler-hoist, 0)
+        ))) * var(--api-unpack-w-90000) +
+        (1 + max(-1, 100000 * min(
+          var(--api-handler-hoist, 0) - 2,
+          2 - var(--api-handler-hoist, 0)
+        ))) * var(--api-unpack-w-09000) +
+        (1 + max(-1, 100000 * min(
+          var(--api-handler-hoist, 0) - 3,
+          3 - var(--api-handler-hoist, 0)
+        ))) * var(--api-unpack-w-00900) +
+        (1 + max(-1, 100000 * min(
+          var(--api-handler-hoist, 0) - 4,
+          4 - var(--api-handler-hoist, 0)
+        ))) * var(--api-unpack-w-00090) +
+        (1 + max(-1, 100000 * min(
+          var(--api-handler-hoist, 0) - 5,
+          5 - var(--api-handler-hoist, 0)
+        ))) * var(--api-unpack-w-00009) +
+        (1 + max(-1, 100000 * min(
+          var(--api-handler-hoist, 0) - 6,
+          6 - var(--api-handler-hoist, 0)
+        ))) * var(--api-unpack-h-90000) +
+        (1 + max(-1, 100000 * min(
+          var(--api-handler-hoist, 0) - 7,
+          7 - var(--api-handler-hoist, 0)
+        ))) * var(--api-unpack-h-09000) +
+        (1 + max(-1, 100000 * min(
+          var(--api-handler-hoist, 0) - 8,
+          8 - var(--api-handler-hoist, 0)
+        ))) * var(--api-unpack-h-00900) +
+        (1 + max(-1, 100000 * min(
+          var(--api-handler-hoist, 0) - 9,
+          9 - var(--api-handler-hoist, 0)
+        ))) * var(--api-unpack-h-00090) +
+        (1 + max(-1, 100000 * min(
+          var(--api-handler-hoist, 0) - 10,
+          10 - var(--api-handler-hoist, 0)
+        ))) * var(--api-unpack-h-00009)
+      );
+
+      .api-cpu {
+        height: calc(
+          var(--api-handler-do-transfer, 0) *
+          (1 + max(-1, 100000 * min(
+            var(--api-transfer, 0) - var(--api-transfer-match, -1),
+            var(--api-transfer-match, -1) - var(--api-transfer, 0)
+          ))) * 100vh
+        );
+      }
+      .api-cpu.api-transfer-value-0 {
+        /* initialize CPU handling on handler state 0 once ready by transferring 0 up */
+        /* OR show it when transfer is 0 */
+        height: calc(
+          min(1,
+            (1 - min(1, var(--api-handler-hoist, 0))) *
+            var(--api-response-ready, 0) +
+
+            var(--api-handler-do-transfer, 0) *
+            (1 + max(-1, 100000 * min(
+              var(--api-transfer, 0),
+              0 - var(--api-transfer, 0)
+            )))
+          ) *
+          100vh
+        );
+      }
+      .api-cpu.api-transfer-value-1 { --api-transfer-match: 1; }
+      .api-cpu.api-transfer-value-2 { --api-transfer-match: 2; }
+      .api-cpu.api-transfer-value-3 { --api-transfer-match: 3; }
+      .api-cpu.api-transfer-value-4 { --api-transfer-match: 4; }
+      .api-cpu.api-transfer-value-5 { --api-transfer-match: 5; }
+      .api-cpu.api-transfer-value-6 { --api-transfer-match: 6; }
+      .api-cpu.api-transfer-value-7 { --api-transfer-match: 7; }
+      .api-cpu.api-transfer-value-8 { --api-transfer-match: 8; }
+      .api-cpu.api-transfer-value-9 { --api-transfer-match: 9; }
+      .api-cpu.api-transfer-complete.api-id-1 { --api-complete-match: 1; }
+      .api-cpu.api-transfer-complete.api-id-2 { --api-complete-match: 2; }
+      .api-cpu.api-transfer-complete.api-id-3 { --api-complete-match: 3; }
+      .api-cpu.api-transfer-complete.api-id-4 { --api-complete-match: 4; }
+      .api-cpu.api-transfer-complete {
+        height: calc(
+          (1 + max(-1, 100000 * min(
+            var(--api-handler-hoist, 0) - 11,
+            11 - var(--api-handler-hoist, 0)
+          ))) *
+          (1 + max(-1, 100000 * min(
+            var(--api-id, 0) - var(--api-complete-match, -1),
+            var(--api-complete-match, -1) - var(--api-id, 0)
+          ))) *
+          100vh
+        );
+      }
+    }
+  }
+
+  .api-handler:hover,
+  .api-trigger:not(button):hover,
+  button.api-trigger:focus {
+    z-index: 2;
+    .api-cpu { position: fixed; }
+    .api-cpu:hover {
+      z-index: 2;
+      > .api-cpu-phase-0 { width: 100%; }
+    }
+  }
+  .api-handler,
+  .api-trigger {
+    position: relative;
+    pointer-events: all;
+    .api-cpu {
+      position: absolute;
+      inset: 0px;
+      > .api-cpu-phase-0 { width: 0px; }
+    }
+  }
+  .api-trigger:not(button):has(.api-cpu-phase-3:hover) {
+    pointer-events: none;
+  }
+  button.api-trigger:has(.api-cpu-phase-3:hover) {
+    pointer-events: none;
+    display: none; /* blur / shake focus */
+  }
+  .api-messages {
+    list-style: none;
+    :root:not(:has(.api-handler:hover)) & {
+      --api-state-idle: calc(1 + max(-1, 100000 * min(
+        var(--api-state) - 1,
+        1 - var(--api-state)
+      )));
+    }
+    @container style(--api-state: 0) { > :not(.api-prompt) { display: none; } }
+    @container style(--api-state: 1) and style(--api-state-idle: 0) {
+      > :not(.api-in-progress) { display: none; }
+    }
+    @container style(--api-state: 1) and style(--api-state-idle: 1) {
+      > :not(.api-continue) { display: none; }
+    }
+    @container style(--api-state: 3) { > :not(.api-complete) { display: none; } }
+  }
+  .api-id-1 .api-messages {
+    --api-state: calc(var(--api-1-in-progress) + var(--api-1-complete) * 3);
+  }
+  .api-id-2 .api-messages {
+    --api-state: calc(var(--api-2-in-progress) + var(--api-2-complete) * 3);
+  }
+  .api-id-3 .api-messages {
+    --api-state: calc(var(--api-3-in-progress) + var(--api-3-complete) * 3);
+  }
+  .api-id-4 .api-messages {
+    --api-state: calc(var(--api-4-in-progress) + var(--api-4-complete) * 3);
+  }
+
+  :root:has(&) {
+    --api-handler: calc(var(--api-handler-hoist, 0));
+
+    --api-id: var(--api-id-hoist, 0);
+    &:has(.api-id-1:where(button.api-trigger:focus, .api-trigger:not(button):hover):not(.api-once)) {
+      --api-id: 1;
+      --api-1-in-progress: 1;
+      --api-1-complete: 0;
+    }
+    &:has(.api-id-1:where(button.api-trigger:focus, .api-trigger:not(button):hover).api-once) {
+      --api-id: calc(1 - var(--api-1-complete-hoist, 0));
+      --api-1-in-progress: calc(1 - var(--api-1-complete-hoist, 0));
+      --api-1-complete: var(--api-1-complete-hoist, 0);
+    }
+    &:has(.api-id-2:where(button.api-trigger:focus, .api-trigger:not(button):hover):not(.api-once)) {
+      --api-id: 2;
+      --api-2-in-progress: 1;
+      --api-2-complete: 0;
+    }
+    &:has(.api-id-2:where(button.api-trigger:focus, .api-trigger:not(button):hover).api-once) {
+      --api-id: calc((1 - var(--api-2-complete-hoist, 0)) * 2);
+      --api-2-in-progress: calc(1 - var(--api-2-complete-hoist, 0));
+      --api-2-complete: var(--api-2-complete-hoist, 0);
+    }
+    &:has(.api-id-3:where(button.api-trigger:focus, .api-trigger:not(button):hover):not(.api-once)) {
+      --api-id: 3;
+      --api-3-in-progress: 1;
+      --api-3-complete: 0;
+    }
+    &:has(.api-id-3:where(button.api-trigger:focus, .api-trigger:not(button):hover).api-once) {
+      --api-id: calc((1 - var(--api-3-complete-hoist, 0)) * 3);
+      --api-3-in-progress: calc(1 - var(--api-3-complete-hoist, 0));
+      --api-3-complete: var(--api-3-complete-hoist, 0);
+    }
+    &:has(.api-id-4:where(button.api-trigger:focus, .api-trigger:not(button):hover):not(.api-once)) {
+      --api-id: 4;
+      --api-4-in-progress: 1;
+      --api-4-complete: 0;
+    }
+    &:has(.api-id-4:where(button.api-trigger:focus, .api-trigger:not(button):hover).api-once) {
+      --api-id: calc((1 - var(--api-4-complete-hoist, 0)) * 4);
+      --api-4-in-progress: calc(1 - var(--api-4-complete-hoist, 0));
+      --api-4-complete: var(--api-4-complete-hoist, 0);
+    }
+
+    &:has(button.api-trigger:focus, .api-trigger:not(button):hover) {
+      --api-state: 0;
+      --api-handler: 0;
+      --api-unpack-w-90000: 0;
+      --api-unpack-w-09000: 0;
+      --api-unpack-w-00900: 0;
+      --api-unpack-w-00090: 0;
+      --api-unpack-w-00009: 0;
+      --api-unpack-h-90000: 0;
+      --api-unpack-h-09000: 0;
+      --api-unpack-h-00900: 0;
+      --api-unpack-h-00090: 0;
+      --api-unpack-h-00009: 0;
+    }
+
+    --api-unpack-w-90000: var(--api-unpack-w-90000-hoist, 0);
+    --api-unpack-w-09000: var(--api-unpack-w-09000-hoist, 0);
+    --api-unpack-w-00900: var(--api-unpack-w-00900-hoist, 0);
+    --api-unpack-w-00090: var(--api-unpack-w-00090-hoist, 0);
+    --api-unpack-w-00009: var(--api-unpack-w-00009-hoist, 0);
+
+    --api-unpack-h-90000: var(--api-unpack-h-90000-hoist, 0);
+    --api-unpack-h-09000: var(--api-unpack-h-09000-hoist, 0);
+    --api-unpack-h-00900: var(--api-unpack-h-00900-hoist, 0);
+    --api-unpack-h-00090: var(--api-unpack-h-00090-hoist, 0);
+    --api-unpack-h-00009: var(--api-unpack-h-00009-hoist, 0);
+
+    /* 0: idle */
+    --api-state: var(--api-state-hoist, 0);
+    /* 1: loading remote */
+    &:has(:where(.api-trigger) .api-cpu:hover) { --api-state: 1; }
+    /* 2: reading (transfering up in DOM) */
+    &:has(.api-handler .api-cpu:hover) { --api-state: 2; }
+    /* 3: complete, data available up on root CPU animations level */
+    &:has(.api-handler .api-cpu.api-transfer-complete:hover) { --api-state: 3; }
+
+    --api-1-in-progress: var(--api-1-in-progress-hoist, 0);
+    --api-1-complete: var(--api-1-complete-hoist, 0);
+    --api-1-response-0: var(--api-1-response-0-hoist, 0);
+    --api-1-response-1: var(--api-1-response-1-hoist, 0);
+    --api-1-response-2: var(--api-1-response-2-hoist, 0);
+    --api-1-response-3: var(--api-1-response-3-hoist, 0);
+    --api-1-response-4: var(--api-1-response-4-hoist, 0);
+    --api-1-response-5: var(--api-1-response-5-hoist, 0);
+    --api-1-response-6: var(--api-1-response-6-hoist, 0);
+    --api-1-response-7: var(--api-1-response-7-hoist, 0);
+    --api-1-response-8: var(--api-1-response-8-hoist, 0);
+    --api-1-response-9: var(--api-1-response-9-hoist, 0);
+    --api-2-in-progress: var(--api-2-in-progress-hoist, 0);
+    --api-2-complete: var(--api-2-complete-hoist, 0);
+    --api-2-response-0: var(--api-2-response-0-hoist, 0);
+    --api-2-response-1: var(--api-2-response-1-hoist, 0);
+    --api-2-response-2: var(--api-2-response-2-hoist, 0);
+    --api-2-response-3: var(--api-2-response-3-hoist, 0);
+    --api-2-response-4: var(--api-2-response-4-hoist, 0);
+    --api-2-response-5: var(--api-2-response-5-hoist, 0);
+    --api-2-response-6: var(--api-2-response-6-hoist, 0);
+    --api-2-response-7: var(--api-2-response-7-hoist, 0);
+    --api-2-response-8: var(--api-2-response-8-hoist, 0);
+    --api-2-response-9: var(--api-2-response-9-hoist, 0);
+    --api-3-in-progress: var(--api-3-in-progress-hoist, 0);
+    --api-3-complete: var(--api-3-complete-hoist, 0);
+    --api-3-response-0: var(--api-3-response-0-hoist, 0);
+    --api-3-response-1: var(--api-3-response-1-hoist, 0);
+    --api-3-response-2: var(--api-3-response-2-hoist, 0);
+    --api-3-response-3: var(--api-3-response-3-hoist, 0);
+    --api-3-response-4: var(--api-3-response-4-hoist, 0);
+    --api-3-response-5: var(--api-3-response-5-hoist, 0);
+    --api-3-response-6: var(--api-3-response-6-hoist, 0);
+    --api-3-response-7: var(--api-3-response-7-hoist, 0);
+    --api-3-response-8: var(--api-3-response-8-hoist, 0);
+    --api-3-response-9: var(--api-3-response-9-hoist, 0);
+    --api-4-in-progress: var(--api-4-in-progress-hoist, 0);
+    --api-4-complete: var(--api-4-complete-hoist, 0);
+    --api-4-response-0: var(--api-4-response-0-hoist, 0);
+    --api-4-response-1: var(--api-4-response-1-hoist, 0);
+    --api-4-response-2: var(--api-4-response-2-hoist, 0);
+    --api-4-response-3: var(--api-4-response-3-hoist, 0);
+    --api-4-response-4: var(--api-4-response-4-hoist, 0);
+    --api-4-response-5: var(--api-4-response-5-hoist, 0);
+    --api-4-response-6: var(--api-4-response-6-hoist, 0);
+    --api-4-response-7: var(--api-4-response-7-hoist, 0);
+    --api-4-response-8: var(--api-4-response-8-hoist, 0);
+    --api-4-response-9: var(--api-4-response-9-hoist, 0);
+    &:has(.api-handler .api-cpu.api-transfer-complete.api-id-1:hover) {
+      --api-1-in-progress: 0;
+      --api-1-complete: 1;
+      --api-1-response-0: var(--api-unpack-w-90000);
+      --api-1-response-1: var(--api-unpack-w-09000);
+      --api-1-response-2: var(--api-unpack-w-00900);
+      --api-1-response-3: var(--api-unpack-w-00090);
+      --api-1-response-4: var(--api-unpack-w-00009);
+      --api-1-response-5: var(--api-unpack-h-90000);
+      --api-1-response-6: var(--api-unpack-h-09000);
+      --api-1-response-7: var(--api-unpack-h-00900);
+      --api-1-response-8: var(--api-unpack-h-00090);
+      --api-1-response-9: var(--api-unpack-h-00009);
+    }
+    &:has(.api-handler .api-cpu.api-transfer-complete.api-id-2:hover) {
+      --api-2-in-progress: 0;
+      --api-2-complete: 1;
+      --api-2-response-0: var(--api-unpack-w-90000);
+      --api-2-response-1: var(--api-unpack-w-09000);
+      --api-2-response-2: var(--api-unpack-w-00900);
+      --api-2-response-3: var(--api-unpack-w-00090);
+      --api-2-response-4: var(--api-unpack-w-00009);
+      --api-2-response-5: var(--api-unpack-h-90000);
+      --api-2-response-6: var(--api-unpack-h-09000);
+      --api-2-response-7: var(--api-unpack-h-00900);
+      --api-2-response-8: var(--api-unpack-h-00090);
+      --api-2-response-9: var(--api-unpack-h-00009);
+    }
+    &:has(.api-handler .api-cpu.api-transfer-complete.api-id-3:hover) {
+      --api-3-in-progress: 0;
+      --api-3-complete: 1;
+      --api-3-response-0: var(--api-unpack-w-90000);
+      --api-3-response-1: var(--api-unpack-w-09000);
+      --api-3-response-2: var(--api-unpack-w-00900);
+      --api-3-response-3: var(--api-unpack-w-00090);
+      --api-3-response-4: var(--api-unpack-w-00009);
+      --api-3-response-5: var(--api-unpack-h-90000);
+      --api-3-response-6: var(--api-unpack-h-09000);
+      --api-3-response-7: var(--api-unpack-h-00900);
+      --api-3-response-8: var(--api-unpack-h-00090);
+      --api-3-response-9: var(--api-unpack-h-00009);
+    }
+    &:has(.api-handler .api-cpu.api-transfer-complete.api-id-4:hover) {
+      --api-4-in-progress: 0;
+      --api-4-complete: 1;
+      --api-4-response-0: var(--api-unpack-w-90000);
+      --api-4-response-1: var(--api-unpack-w-09000);
+      --api-4-response-2: var(--api-unpack-w-00900);
+      --api-4-response-3: var(--api-unpack-w-00090);
+      --api-4-response-4: var(--api-unpack-w-00009);
+      --api-4-response-5: var(--api-unpack-h-90000);
+      --api-4-response-6: var(--api-unpack-h-09000);
+      --api-4-response-7: var(--api-unpack-h-00900);
+      --api-4-response-8: var(--api-unpack-h-00090);
+      --api-4-response-9: var(--api-unpack-h-00009);
+    }
+
+    --api-state-idle: calc(1 - min(1, var(--api-state-hoist, 0)));
+    --api-state-loading: calc(1 + max(-1, 100000 * min(
+      var(--api-state-hoist, 0) - 1,
+      1 - var(--api-state-hoist, 0)
+    )));
+    --api-state-reading: calc(1 + max(-1, 100000 * min(
+      var(--api-state-hoist, 0) - 2,
+      2 - var(--api-state-hoist, 0)
+    )));
+    --api-state-complete: max(0, var(--api-state-hoist, 0) - 2);
+
+    --api-transfer: 0;
+    &:has(.api-handler .api-cpu.api-transfer-value-0:hover) { --api-transfer: 0; }
+    &:has(.api-handler .api-cpu.api-transfer-value-1:hover) { --api-transfer: 1; }
+    &:has(.api-handler .api-cpu.api-transfer-value-2:hover) { --api-transfer: 2; }
+    &:has(.api-handler .api-cpu.api-transfer-value-3:hover) { --api-transfer: 3; }
+    &:has(.api-handler .api-cpu.api-transfer-value-4:hover) { --api-transfer: 4; }
+    &:has(.api-handler .api-cpu.api-transfer-value-5:hover) { --api-transfer: 5; }
+    &:has(.api-handler .api-cpu.api-transfer-value-6:hover) { --api-transfer: 6; }
+    &:has(.api-handler .api-cpu.api-transfer-value-7:hover) { --api-transfer: 7; }
+    &:has(.api-handler .api-cpu.api-transfer-value-8:hover) { --api-transfer: 8; }
+    &:has(.api-handler .api-cpu.api-transfer-value-9:hover) { --api-transfer: 9; }
+
+    &:has(.api-handler .api-cpu:hover) {
+      --api-handler-stop-at-11: calc(-1 * max(-1, min(0, -100000 * (
+        var(--api-handler-hoist, 0) - 11
+      ))));
+      --api-handler: calc(
+        var(--api-handler-stop-at-11) * 11 +
+        (1 - var(--api-handler-stop-at-11)) * (var(--api-handler-hoist, 0) + 1)
+      );
+
+      --api-handler-w-over-9000: calc(1 + max(-1, 100000 * min(
+        var(--api-handler-hoist, 0) - 1,
+        1 - var(--api-handler-hoist, 0)
+      )));
+      --api-handler-w-thou: calc(1 + max(-1, 100000 * min(
+        var(--api-handler-hoist, 0) - 2,
+        2 - var(--api-handler-hoist, 0)
+      )));
+      --api-handler-w-hund: calc(1 + max(-1, 100000 * min(
+        var(--api-handler-hoist, 0) - 3,
+        3 - var(--api-handler-hoist, 0)
+      )));
+      --api-handler-w-tens: calc(1 + max(-1, 100000 * min(
+        var(--api-handler-hoist, 0) - 4,
+        4 - var(--api-handler-hoist, 0)
+      )));
+      --api-handler-w-ones: calc(1 + max(-1, 100000 * min(
+        var(--api-handler-hoist, 0) - 5,
+        5 - var(--api-handler-hoist, 0)
+      )));
+
+      --api-handler-h-over-9000: calc(1 + max(-1, 100000 * min(
+        var(--api-handler-hoist, 0) - 6,
+        6 - var(--api-handler-hoist, 0)
+      )));
+      --api-handler-h-thou: calc(1 + max(-1, 100000 * min(
+        var(--api-handler-hoist, 0) - 7,
+        7 - var(--api-handler-hoist, 0)
+      )));
+      --api-handler-h-hund: calc(1 + max(-1, 100000 * min(
+        var(--api-handler-hoist, 0) - 8,
+        8 - var(--api-handler-hoist, 0)
+      )));
+      --api-handler-h-tens: calc(1 + max(-1, 100000 * min(
+        var(--api-handler-hoist, 0) - 9,
+        9 - var(--api-handler-hoist, 0)
+      )));
+      --api-handler-h-ones: calc(1 + max(-1, 100000 * min(
+        var(--api-handler-hoist, 0) - 10,
+        10 - var(--api-handler-hoist, 0)
+      )));
+
+      /* if handler phase is setting over-9000/thou/hund/tens/ones place (of w or h), */
+      /* then use the transfer val for the corresponding var, else use its prev value */
+      --api-unpack-w-90000: calc(
+        var(--api-handler-w-over-9000) * var(--api-transfer) +
+        (1 - var(--api-handler-w-over-9000)) * var(--api-unpack-w-90000-hoist, 0)
+      );
+      --api-unpack-w-09000: calc(
+        var(--api-handler-w-thou) * var(--api-transfer) +
+        (1 - var(--api-handler-w-thou)) * var(--api-unpack-w-09000-hoist, 0)
+      );
+      --api-unpack-w-00900: calc(
+        var(--api-handler-w-hund) * var(--api-transfer) +
+        (1 - var(--api-handler-w-hund)) * var(--api-unpack-w-00900-hoist, 0)
+      );
+      --api-unpack-w-00090: calc(
+        var(--api-handler-w-tens) * var(--api-transfer) +
+        (1 - var(--api-handler-w-tens)) * var(--api-unpack-w-00090-hoist, 0)
+      );
+      --api-unpack-w-00009: calc(
+        var(--api-handler-w-ones) * var(--api-transfer) +
+        (1 - var(--api-handler-w-ones)) * var(--api-unpack-w-00009-hoist, 0)
+      );
+      --api-unpack-h-90000: calc(
+        var(--api-handler-h-over-9000) * var(--api-transfer) +
+        (1 - var(--api-handler-h-over-9000)) * var(--api-unpack-h-90000-hoist, 0)
+      );
+      --api-unpack-h-09000: calc(
+        var(--api-handler-h-thou) * var(--api-transfer) +
+        (1 - var(--api-handler-h-thou)) * var(--api-unpack-h-09000-hoist, 0)
+      );
+      --api-unpack-h-00900: calc(
+        var(--api-handler-h-hund) * var(--api-transfer) +
+        (1 - var(--api-handler-h-hund)) * var(--api-unpack-h-00900-hoist, 0)
+      );
+      --api-unpack-h-00090: calc(
+        var(--api-handler-h-tens) * var(--api-transfer) +
+        (1 - var(--api-handler-h-tens)) * var(--api-unpack-h-00090-hoist, 0)
+      );
+      --api-unpack-h-00009: calc(
+        var(--api-handler-h-ones) * var(--api-transfer) +
+        (1 - var(--api-handler-h-ones)) * var(--api-unpack-h-00009-hoist, 0)
+      );
+    }
+
+    --api-response-w: calc(
+      var(--api-unpack-w-90000) * 10000 +
+      var(--api-unpack-w-09000) * 1000 +
+      var(--api-unpack-w-00900) * 100 +
+      var(--api-unpack-w-00090) * 10 +
+      var(--api-unpack-w-00009)
+    );
+    --api-response-w-px: calc(var(--api-response-w) * 1px);
+
+    --api-response-h: calc(
+      var(--api-unpack-h-90000) * 10000 +
+      var(--api-unpack-h-09000) * 1000 +
+      var(--api-unpack-h-00900) * 100 +
+      var(--api-unpack-h-00090) * 10 +
+      var(--api-unpack-h-00009)
+    );
+    --api-response-h-px: calc(var(--api-response-h) * 1px);
+  }
+}
+
+/* CPU Hack boilerplate + API keyframe state injections */
+:root {
+  animation: api-capture 1ms infinite,
+    api-hoist 1ms infinite;
+  animation-play-state: paused, paused;
+
+  --api-input-frame: var(--api-frame-hoist, 0);
+  --api-frame-count: calc(var(--api-input-frame) + 1);
+}
+:root:has(.css-api > .api-debug-on)::after {
+  counter-reset: frame var(--api-frame-count);
+  content: "--api-frame-count: " counter(frame);
+  position: absolute;
+  bottom: 0px;
+  pointer-events: none;
+}
+@keyframes api-capture {
+  0%, 100% {
+    --api-frame-captured: var(--api-frame-count);
+
+    --api-id-captured: var(--api-id);
+    --api-state-captured: var(--api-state);
+    --api-handler-captured: var(--api-handler);
+    --api-unpack-w-90000-captured: var(--api-unpack-w-90000);
+    --api-unpack-w-09000-captured: var(--api-unpack-w-09000);
+    --api-unpack-w-00900-captured: var(--api-unpack-w-00900);
+    --api-unpack-w-00090-captured: var(--api-unpack-w-00090);
+    --api-unpack-w-00009-captured: var(--api-unpack-w-00009);
+    --api-unpack-h-90000-captured: var(--api-unpack-h-90000);
+    --api-unpack-h-09000-captured: var(--api-unpack-h-09000);
+    --api-unpack-h-00900-captured: var(--api-unpack-h-00900);
+    --api-unpack-h-00090-captured: var(--api-unpack-h-00090);
+    --api-unpack-h-00009-captured: var(--api-unpack-h-00009);
+    --api-1-in-progress-captured: var(--api-1-in-progress);
+    --api-1-complete-captured: var(--api-1-complete);
+    --api-1-response-0-captured: var(--api-1-response-0);
+    --api-1-response-1-captured: var(--api-1-response-1);
+    --api-1-response-2-captured: var(--api-1-response-2);
+    --api-1-response-3-captured: var(--api-1-response-3);
+    --api-1-response-4-captured: var(--api-1-response-4);
+    --api-1-response-5-captured: var(--api-1-response-5);
+    --api-1-response-6-captured: var(--api-1-response-6);
+    --api-1-response-7-captured: var(--api-1-response-7);
+    --api-1-response-8-captured: var(--api-1-response-8);
+    --api-1-response-9-captured: var(--api-1-response-9);
+    --api-2-in-progress-captured: var(--api-2-in-progress);
+    --api-2-complete-captured: var(--api-2-complete);
+    --api-2-response-0-captured: var(--api-2-response-0);
+    --api-2-response-1-captured: var(--api-2-response-1);
+    --api-2-response-2-captured: var(--api-2-response-2);
+    --api-2-response-3-captured: var(--api-2-response-3);
+    --api-2-response-4-captured: var(--api-2-response-4);
+    --api-2-response-5-captured: var(--api-2-response-5);
+    --api-2-response-6-captured: var(--api-2-response-6);
+    --api-2-response-7-captured: var(--api-2-response-7);
+    --api-2-response-8-captured: var(--api-2-response-8);
+    --api-2-response-9-captured: var(--api-2-response-9);
+    --api-3-in-progress-captured: var(--api-3-in-progress);
+    --api-3-complete-captured: var(--api-3-complete);
+    --api-3-response-0-captured: var(--api-3-response-0);
+    --api-3-response-1-captured: var(--api-3-response-1);
+    --api-3-response-2-captured: var(--api-3-response-2);
+    --api-3-response-3-captured: var(--api-3-response-3);
+    --api-3-response-4-captured: var(--api-3-response-4);
+    --api-3-response-5-captured: var(--api-3-response-5);
+    --api-3-response-6-captured: var(--api-3-response-6);
+    --api-3-response-7-captured: var(--api-3-response-7);
+    --api-3-response-8-captured: var(--api-3-response-8);
+    --api-3-response-9-captured: var(--api-3-response-9);
+    --api-4-in-progress-captured: var(--api-4-in-progress);
+    --api-4-complete-captured: var(--api-4-complete);
+    --api-4-response-0-captured: var(--api-4-response-0);
+    --api-4-response-1-captured: var(--api-4-response-1);
+    --api-4-response-2-captured: var(--api-4-response-2);
+    --api-4-response-3-captured: var(--api-4-response-3);
+    --api-4-response-4-captured: var(--api-4-response-4);
+    --api-4-response-5-captured: var(--api-4-response-5);
+    --api-4-response-6-captured: var(--api-4-response-6);
+    --api-4-response-7-captured: var(--api-4-response-7);
+    --api-4-response-8-captured: var(--api-4-response-8);
+    --api-4-response-9-captured: var(--api-4-response-9);
+  }
+}
+@keyframes api-hoist {
+  0%, 100% {
+    --api-frame-hoist: var(--api-frame-captured, 0);
+
+    --api-id-hoist: var(--api-id-captured, 0);
+    --api-state-hoist: var(--api-state-captured, 0);
+    --api-handler-hoist: var(--api-handler-captured, 0);
+    --api-unpack-w-90000-hoist: var(--api-unpack-w-90000-captured, 0);
+    --api-unpack-w-09000-hoist: var(--api-unpack-w-09000-captured, 0);
+    --api-unpack-w-00900-hoist: var(--api-unpack-w-00900-captured, 0);
+    --api-unpack-w-00090-hoist: var(--api-unpack-w-00090-captured, 0);
+    --api-unpack-w-00009-hoist: var(--api-unpack-w-00009-captured, 0);
+    --api-unpack-h-90000-hoist: var(--api-unpack-h-90000-captured, 0);
+    --api-unpack-h-09000-hoist: var(--api-unpack-h-09000-captured, 0);
+    --api-unpack-h-00900-hoist: var(--api-unpack-h-00900-captured, 0);
+    --api-unpack-h-00090-hoist: var(--api-unpack-h-00090-captured, 0);
+    --api-unpack-h-00009-hoist: var(--api-unpack-h-00009-captured, 0);
+    --api-1-in-progress-hoist: var(--api-1-in-progress-captured, 0);
+    --api-1-complete-hoist: var(--api-1-complete-captured, 0);
+    --api-1-response-0-hoist: var(--api-1-response-0-captured, 0);
+    --api-1-response-1-hoist: var(--api-1-response-1-captured, 0);
+    --api-1-response-2-hoist: var(--api-1-response-2-captured, 0);
+    --api-1-response-3-hoist: var(--api-1-response-3-captured, 0);
+    --api-1-response-4-hoist: var(--api-1-response-4-captured, 0);
+    --api-1-response-5-hoist: var(--api-1-response-5-captured, 0);
+    --api-1-response-6-hoist: var(--api-1-response-6-captured, 0);
+    --api-1-response-7-hoist: var(--api-1-response-7-captured, 0);
+    --api-1-response-8-hoist: var(--api-1-response-8-captured, 0);
+    --api-1-response-9-hoist: var(--api-1-response-9-captured, 0);
+    --api-2-in-progress-hoist: var(--api-2-in-progress-captured, 0);
+    --api-2-complete-hoist: var(--api-2-complete-captured, 0);
+    --api-2-response-0-hoist: var(--api-2-response-0-captured, 0);
+    --api-2-response-1-hoist: var(--api-2-response-1-captured, 0);
+    --api-2-response-2-hoist: var(--api-2-response-2-captured, 0);
+    --api-2-response-3-hoist: var(--api-2-response-3-captured, 0);
+    --api-2-response-4-hoist: var(--api-2-response-4-captured, 0);
+    --api-2-response-5-hoist: var(--api-2-response-5-captured, 0);
+    --api-2-response-6-hoist: var(--api-2-response-6-captured, 0);
+    --api-2-response-7-hoist: var(--api-2-response-7-captured, 0);
+    --api-2-response-8-hoist: var(--api-2-response-8-captured, 0);
+    --api-2-response-9-hoist: var(--api-2-response-9-captured, 0);
+    --api-3-in-progress-hoist: var(--api-3-in-progress-captured, 0);
+    --api-3-complete-hoist: var(--api-3-complete-captured, 0);
+    --api-3-response-0-hoist: var(--api-3-response-0-captured, 0);
+    --api-3-response-1-hoist: var(--api-3-response-1-captured, 0);
+    --api-3-response-2-hoist: var(--api-3-response-2-captured, 0);
+    --api-3-response-3-hoist: var(--api-3-response-3-captured, 0);
+    --api-3-response-4-hoist: var(--api-3-response-4-captured, 0);
+    --api-3-response-5-hoist: var(--api-3-response-5-captured, 0);
+    --api-3-response-6-hoist: var(--api-3-response-6-captured, 0);
+    --api-3-response-7-hoist: var(--api-3-response-7-captured, 0);
+    --api-3-response-8-hoist: var(--api-3-response-8-captured, 0);
+    --api-3-response-9-hoist: var(--api-3-response-9-captured, 0);
+    --api-4-in-progress-hoist: var(--api-4-in-progress-captured, 0);
+    --api-4-complete-hoist: var(--api-4-complete-captured, 0);
+    --api-4-response-0-hoist: var(--api-4-response-0-captured, 0);
+    --api-4-response-1-hoist: var(--api-4-response-1-captured, 0);
+    --api-4-response-2-hoist: var(--api-4-response-2-captured, 0);
+    --api-4-response-3-hoist: var(--api-4-response-3-captured, 0);
+    --api-4-response-4-hoist: var(--api-4-response-4-captured, 0);
+    --api-4-response-5-hoist: var(--api-4-response-5-captured, 0);
+    --api-4-response-6-hoist: var(--api-4-response-6-captured, 0);
+    --api-4-response-7-hoist: var(--api-4-response-7-captured, 0);
+    --api-4-response-8-hoist: var(--api-4-response-8-captured, 0);
+    --api-4-response-9-hoist: var(--api-4-response-9-captured, 0);
+  }
+}
+
+@property --api-frame-count { syntax: "<integer>"; initial-value: 0; inherits: true; }
+
+.api-cpu { position: relative; list-style: none; }
+.api-cpu > * {
+  position: absolute;
+  inset: 0px;
+  width: 0px;
+}
+.api-cpu > .api-cpu-phase-0 { width: 100%; }
+.api-cpu > .api-cpu-phase-0:hover ~ .api-cpu-phase-1 { width: 100%; }
+.api-cpu > .api-cpu-phase-1:hover ~ .api-cpu-phase-2 { width: 100%; }
+.api-cpu > .api-cpu-phase-2:hover ~ .api-cpu-phase-3 { width: 100%; }
+
+:root:has(.api-cpu-phase-0:hover) {
+  animation-play-state: running, paused;
+}
+:root:has(.api-cpu-phase-1:hover) {
+  animation-play-state: paused, paused;
+}
+:root:has(.api-cpu-phase-2:hover) {
+  animation-play-state: paused, running;
+}
+:root:has(.api-cpu-phase-3:hover) {
+  animation-play-state: paused, paused;
+}

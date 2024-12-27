@@ -1,38 +1,38 @@
 [![Jane Ori - PropJockey.io](https://img.shields.io/badge/Jane%20Ori%20%F0%9F%91%BD-%F0%9F%A4%8D%20PropJockey.io-7300E6.svg?labelColor=FB04C2&style=plastic)](http://jane.propjockey.io/)
 
-# css-api from <img src="https://github.com/user-attachments/assets/87119fb5-c39d-429a-9bfd-424f0e100720" alt="" width="30px"> PropJockey
+# css-api-fetch from <img src="https://github.com/user-attachments/assets/87119fb5-c39d-429a-9bfd-424f0e100720" alt="" width="30px"> PropJockey
 Make remote API Requests in CSS (Cascading Style Sheets) and store the response data in `--vars` on `:root` *without JavaScript*.
 
 
 ## Installation and Setup
 
-css-api requires specific html in additon to the CSS.
+`css-api-fetch` requires specific html in additon to the CSS.
 
 ### Add the CSS first:
 
-`$ npm install css-api`
+`$ npm install css-api-fetch`
 
-Then include `/node_modules/css-api/css-api.css`
+Then include `/node_modules/css-api-fetch/css-api.css`
 
 #### OR Use your favorite NPM CDN for small projects
 
 From html:
 
 ```html
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/css-api@1/css-api.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/css-api-fetch@1/css-api.css">
 ```
 
 or directly from your CSS:
 
 ```css
-@import url(https://unpkg.com/css-api@1/css-api.css);
+@import url(https://unpkg.com/css-api-fetch@1/css-api.css);
 ```
 
 ### Adding the HTML
 
-TODO
+See `./html-templates.md` for instructions.
 
-### Add triggers in the HTML
+### Customize API endpoints in the CSS
 
 You can save responses to `:root` from up to 4 different API requests.
 
@@ -52,40 +52,9 @@ You can specify the corresponding endpoints in your CSS:
 
 you can add any other CSS conditions you desire, `--api-id` is the only requirement. You can also use any number of urls for a single api id but the response data will be overwritten if you send a second request to the same api-id.
 
-If your trigger is a `button` element, it will need to be focused to trigger. All other trigger elements execute on hover but both types require the mouse/pointer to :hover on the page to complete.
-
-By default, api requests can re-trigger any number of times; use `api-once` to prevent it.
-
-#### Trigger Messages
-
-The triggers can have any content inside that you wish as long as the cpu list html remains and doesn't have anything z-index'd over it.
-
-Optionally, providing this message list, you can easily customize what your trigger shows based on the state of your remote API request.
-
-```html
-<div class="api-trigger api-id-1 api-once">
-  <ol class="api-messages">
-    <li class="api-prompt">PROMPT TO HOVER (or click if .api-trigger was a button element)</li>
-    <li class="api-in-progress">REQUEST IS LOADING...</li>
-    <li class="api-continue">
-      you must :hover the page in order for the data to be read,
-      this shows if it's in progress and the mouse left the screen
-    </li>
-    <li class="api-complete">shows when data is available on :root</li>
-  </ol>
-  <ol class="cpu">
-    ...
-```
-
-### Positioning your triggers on screen
-
-absolute, fixed, or anchor position the trigger elements with whatever CSS you want. You should primarily use your own classes and selectors instead of relying on the built-in `api-*` classes.
-
-Do not modify the `position` or related properties of any other api element.
-
 ## Setting up a compatible API
 
-css-api expects an image response with the response data encoded into the height and width.
+`css-api-fetch` expects an image response with the response data encoded into the height and width.
 
 The maximum width is `99999px` which is more than 16 bits of data.
 
@@ -127,11 +96,11 @@ Once a request is complete, the following set of 10 variables will be set on `:r
 ...
 ```
 
-the response variables hold each decimal digit of the width followed by each of the height. You can use calc() to do any decoding necessary.
+the response variables hold each decimal digit of the width followed by each of the height. You can use `calc()` and other techniques to do any decoding necessary. Please reach out if you have a specific goal, there's not much that can't be done yet.
 
-[css-bin-bits](https://propjockey.github.io/css-bin-bits/) can help you convert 16 bit decimal numbers between decimal and binary and perform bitwise operations on the values without JS.
+For example, [css-bin-bits](https://propjockey.github.io/css-bin-bits/) can help you convert 16 bit decimal numbers between decimal and binary and perform bitwise operations on the values without JS.
 
-an image returned from `api-id-3` that's `129px` wide and `65535px` tall would have the data:
+An image returned from `api-id-3` that's `129px` wide and `65535px` tall would have the data:
 
 ```css
 --api-3-response-0: 0;

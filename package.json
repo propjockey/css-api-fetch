@@ -1,0 +1,26 @@
+{
+  "name": "css-api-fetch",
+  "version": "1.0.2",
+  "description": "Make API Requests in CSS and store the response data on :root --vars without JS.",
+  "main": "css-api.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/propjockey/css-api-fetch.git"
+  },
+  "keywords": [
+    "CSS",
+    "API",
+    "PropJockey",
+    "css-api",
+    "css-api-fetch"
+  ],
+  "author": "Jane Ori",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/propjockey/css-api-fetch/issues"
+  },
+  "homepage": "http://css-api.com"
+}
