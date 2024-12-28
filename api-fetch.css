@@ -48,8 +48,8 @@
         width: var(--api_width-mini);
         --api-response-mini-w-px: 100cqw;
         --api-response-mini-h-px: 100cqh;
-        --api-response-mini-w: calc(tan(atan2(var(--api-response-mini-w-px), 1px)));
-        --api-response-mini-h: calc(tan(atan2(var(--api-response-mini-h-px), 1px)));
+        --api-response-mini-w: calc(10000 * tan(atan2(var(--api-response-mini-w-px), 10000px)));
+        --api-response-mini-h: calc(10000 * tan(atan2(var(--api-response-mini-h-px), 10000px)));
         --api-response-mini-ready: min(1,
           min(1, var(--api-response-mini-w)) +
           min(1, var(--api-response-mini-h))
@@ -356,8 +356,8 @@
       --api-response-h-px: 100cqh;
 
       /* raw data */
-      --api-response-w: calc(tan(atan2(var(--api-response-w-px), 1px)));
-      --api-response-h: calc(tan(atan2(var(--api-response-h-px), 1px)));
+      --api-response-w: calc(10000 * tan(atan2(var(--api-response-w-px), 10000px)));
+      --api-response-h: calc(10000 * tan(atan2(var(--api-response-h-px), 10000px)));
       --api-response-ready: min(1,
         min(1, var(--api-response-w)) +
         min(1, var(--api-response-h))
