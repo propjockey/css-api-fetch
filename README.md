@@ -3,6 +3,31 @@
 # css-api-fetch from <img src="https://github.com/user-attachments/assets/87119fb5-c39d-429a-9bfd-424f0e100720" alt="" width="30px"> PropJockey
 Make remote API Requests in CSS (Cascading Style Sheets) and store the response data in `--vars` on `:root` *without JavaScript*.
 
+## Mini vs Root or Both?
+
+There are 3 css files you can use with different trade-offs.
+
+1) `api-fetch.css` - contains both of the following
+
+2) `api-fetch-mini.css`
+
+* works in Chrome, FireFox, Safari, and on mobile
+* Does not lift the response data to `:root`, it can only be used within the element.
+* Does not let you store more than one response at a time unless they are in sepearate elements.
+* The element that contains the response data must have a fixed width and height and can't automatically resize based on the content.
+* Overflow is hidden and can't be avoided.
+* Anything you build that uses the single response must be within the provided element.
+* Does not deconstruct the encoded responses per decimal digit for you.
+* Triggering the request is in your hands, based on however/whenever you choose to set the `url()`
+
+3) `api-fetch-root.css`
+
+* currently only works in Chrome on Desktop
+* Response data is lifted to `:root` and can be used anywhere.
+* Up to 4 responses can be stored at the same time for use anywhere in your project.
+* The encoded response data is deconstructed per decimal digit for each request.
+* Triggering the request requires specific setup but there are no limits on when you choose to initiate the requests.
+
 
 ## Installation and Setup
 
@@ -30,9 +55,13 @@ or directly from your CSS:
 
 ### Adding the HTML
 
-See `./html-templates.md` for instructions.
+See `./html-templates-root.md` for instructions for the `:root` version setup.
 
-### Customize API endpoints in the CSS
+See `./html-templates-mini.md` for instructions on the `mini` version setup and usage.
+
+See both if you use `api-fetch.css` and want to use both.
+
+### Customize API endpoints in the CSS (:root version)
 
 You can save responses to `:root` from up to 4 different API requests.
 
@@ -52,7 +81,7 @@ You can specify the corresponding endpoints in your CSS:
 
 you can add any other CSS conditions you desire, `--api-id` is the only requirement. You can also use any number of urls for a single api id but the response data will be overwritten if you send a second request to the same api-id.
 
-## Setting up a compatible API
+## Setting up a compatible API (both versions)
 
 `css-api-fetch` expects an image response with the response data encoded into the height and width.
 
@@ -84,7 +113,7 @@ Here is a live example of this in action:
 [![screenshot of the live demo here](https://github.com/user-attachments/assets/2248a215-cb69-4708-860c-cd1b644f6422)](https://codepen.io/propjockey/pen/pvzrWyG/f753d87ebc1dd25fb6f5d674698fb7a0?editors=1100)
 
 
-## Accessing the remote request's Response Data
+## Accessing the remote request's Response Data (:root version)
 
 Once a request is complete, the following set of 10 variables will be set on `:root` for each api id. They are all 0 prior to any corresponding requests.
 

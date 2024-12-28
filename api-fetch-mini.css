@@ -1,0 +1,60 @@
+/**
+ * css-api-fetch
+ * BSD 2-Clause License
+ * Copyright (c) Jane Ori, PropJockey, 2024
+ */
+
+@property --api-response-mini-w-px {
+  syntax: "<length>"; inherits: true; initial-value: 0px;
+}
+@property --api-response-mini-h-px {
+  syntax: "<length>"; inherits: true; initial-value: 0px;
+}
+@property --api-response-mini-w {
+  syntax: "<integer>"; inherits: true; initial-value: 0;
+}
+@property --api-response-mini-h {
+  syntax: "<integer>"; inherits: true; initial-value: 0;
+}
+.css-api-fetch-mini {
+  --api_height-mini: var(--api-height-mini, 100px);
+  --api_width-mini: var(--api-width-mini, 100px);
+  --api_fetch-mini: var(--api-fetch-mini, url(https://picsum.photos/512/256));
+  height: var(--api_height-mini);
+  width: var(--api_width-mini);
+  overflow: hidden;
+  position: relative;
+  *, & { margin: 0px; padding: 0px; box-sizing: border-box; }
+  &.api-debug-mini-on .api-response-mini::after {
+    counter-reset: w var(--api-response-mini-w) h var(--api-response-mini-h);
+    content: "w: " counter(w) " h: " counter(h);
+  }
+  .api-fetch-mini {
+    visibility: hidden;
+    position: absolute;
+    &::after {
+      content: var(--api_fetch-mini);
+      display: block;
+      font-size: 0;
+    }
+    .api-parse-mini {
+      container: api-response-mini / size;
+      position: absolute;
+      inset: 0px;
+      .api-response-mini {
+        visibility: visible;
+        position: absolute;
+        height: var(--api_height-mini);
+        width: var(--api_width-mini);
+        --api-response-mini-w-px: 100cqw;
+        --api-response-mini-h-px: 100cqh;
+        --api-response-mini-w: calc(tan(atan2(var(--api-response-mini-w-px), 1px)));
+        --api-response-mini-h: calc(tan(atan2(var(--api-response-mini-h-px), 1px)));
+        --api-response-mini-ready: min(1,
+          min(1, var(--api-response-mini-w)) +
+          min(1, var(--api-response-mini-h))
+        );
+      }
+    }
+  }
+}
