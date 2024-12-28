@@ -1,5 +1,5 @@
 /**
- * css-api
+ * css-api-fetch
  * BSD 2-Clause License
  * Copyright (c) Jane Ori, PropJockey, 2024
  */
@@ -79,7 +79,7 @@
 @property --api-4-response-8 { syntax: "<integer>"; inherits: true; initial-value: 0; }
 @property --api-4-response-9 { syntax: "<integer>"; inherits: true; initial-value: 0; }
 
-.css-api {
+.css-api-fetch {
   pointer-events: none;
   &, * {
     margin: 0px;
@@ -874,7 +874,7 @@
   --api-input-frame: var(--api-frame-hoist, 0);
   --api-frame-count: calc(var(--api-input-frame) + 1);
 }
-:root:has(.css-api > .api-debug-on)::after {
+:root:has(.css-api-fetch > .api-debug-on)::after {
   counter-reset: frame var(--api-frame-count);
   content: "--api-frame-count: " counter(frame);
   position: absolute;

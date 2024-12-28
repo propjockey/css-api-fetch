@@ -1,4 +1,4 @@
-# HTML templating for css-api setup and usage
+# HTML templating for css-api-fetch setup and usage
 
 The html in each part should be used exactly as-is.
 
@@ -146,7 +146,7 @@ Optionally, if the element is a button, it will not trigger until it has `:focus
 
 Add a your own additional class name to the outer `api-trigger` element to position it anywhere you want. Fixed, absolute, anchor, etc.
 
-If you wish to maximize chances of success, do not modify the positioning, transform, or z-index of any other elements provided here. Only the `api-trigger` elements are designed to be positioned with custom CSS.
+If you wish to maximize chances of success, do not modify the positioning, transform, or z-index of any other elements provided here. Only the `api-trigger` elements and the `api-messages` inside it are designed to be positioned with custom CSS.
 
 You can remove `api-once` from the `api-trigger` element if you wish for the API to be requested every time the trigger is interacted with.
 
@@ -177,13 +177,13 @@ If you want specific, status aware messages, use this html specifically and repl
   </ol>
 ```
 
-If your designs for the elements here interferes with `css-api` functionality, consider making your content:
+If your designs for the elements here interferes with `css-api-fetch` functionality, consider making your content:
 
 `pointer-events: none;`
 
 ## Open Contact 👽
 
-PLEASE reach out if you need help with any of this, have feature requests, or wish to learn more.
+Please do reach out if you need help with any of this, have feature requests, want to share what you've created, or wish to learn more.
 
 | PropJockey.io | CodePen | DEV Blog | GitHub | Mastodon |
 | --- | --- | --- | --- | --- |

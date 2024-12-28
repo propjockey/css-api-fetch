@@ -12,20 +12,20 @@ Make remote API Requests in CSS (Cascading Style Sheets) and store the response 
 
 `$ npm install css-api-fetch`
 
-Then include `/node_modules/css-api-fetch/css-api.css`
+Then include `/node_modules/css-api-fetch/api-fetch.css`
 
 #### OR Use your favorite NPM CDN for small projects
 
 From html:
 
 ```html
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/css-api-fetch@1/css-api.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/css-api-fetch@1/api-fetch.css">
 ```
 
 or directly from your CSS:
 
 ```css
-@import url(https://unpkg.com/css-api-fetch@1/css-api.css);
+@import url(https://unpkg.com/css-api-fetch@1/api-fetch.css);
 ```
 
 ### Adding the HTML
@@ -60,7 +60,9 @@ The maximum width is `99999px` which is more than 16 bits of data.
 
 The maximum height is also `99999px` which is more than 32 bits of data total.
 
-For example, here is php generating an svg that encodes the 32 bit request IP Address:
+### For example, getting the user's IP Address with CSS
+
+Here, is php generating an svg that encodes the 32 bit request IP Address:
 
 ```php
 <?php
@@ -74,6 +76,11 @@ For example, here is php generating an svg that encodes the 32 bit request IP Ad
   echo '<svg xmlns="http://www.w3.org/2000/svg" width="' . $width . 'px" height="' . $height . 'px"></svg>';
 ?>
 ```
+
+16 bits in width, 16 bits in height
+
+Here is a live example of this in action:
+https://codepen.io/propjockey/pen/pvzrWyG/f753d87ebc1dd25fb6f5d674698fb7a0?editors=1100
 
 ## Accessing the remote request's Response Data
 
@@ -134,6 +141,8 @@ Additionally, there are 2 status bits available for all 4 api ids:
 they will both be 0 before any corresponding api requests have been triggered.
 
 ## Open Contact 👽
+
+Please do reach out if you need help with any of this, have feature requests, want to share what you've created, or wish to learn more.
 
 | PropJockey.io | CodePen | DEV Blog | GitHub | Mastodon |
 | --- | --- | --- | --- | --- |

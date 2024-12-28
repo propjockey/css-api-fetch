@@ -1,8 +1,8 @@
 {
   "name": "css-api-fetch",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Make API Requests in CSS and store the response data on :root --vars without JS.",
-  "main": "css-api.css",
+  "main": "api-fetch.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
