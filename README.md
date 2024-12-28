@@ -80,7 +80,9 @@ Here, is php generating an svg that encodes the 32 bit request IP Address:
 16 bits in width, 16 bits in height
 
 Here is a live example of this in action:
-https://codepen.io/propjockey/pen/pvzrWyG/f753d87ebc1dd25fb6f5d674698fb7a0?editors=1100
+
+[![screenshot of the live demo here](https://github.com/user-attachments/assets/2248a215-cb69-4708-860c-cd1b644f6422)](https://codepen.io/propjockey/pen/pvzrWyG/f753d87ebc1dd25fb6f5d674698fb7a0?editors=1100)
+
 
 ## Accessing the remote request's Response Data
 
