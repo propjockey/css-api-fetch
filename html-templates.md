@@ -4,14 +4,14 @@ The html in each part should be used exactly as-is.
 
 The html comments can be replaced as defined lower in this document.
 
-Nothing else should change and it should all be included, including the outer `css-api` wrapper.
+Nothing else should change and it should all be included, including the outer `css-api-fetch` wrapper.
 
 ## Primary interface
 
 Ideally this will be placed right before the close `</body>` tag to minimize interference with functionality.
 
 ```html
-<div class="css-api">
+<div class="css-api-fetch">
   <div class="api-debug-off"></div>
 
   <!-- api-trigger api-once api-id-1 -->
