@@ -1,6 +1,6 @@
 {
   "name": "css-api-fetch",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Make API Requests in CSS and store the response data on :root --vars without JS.",
   "main": "api-fetch.css",
   "scripts": {

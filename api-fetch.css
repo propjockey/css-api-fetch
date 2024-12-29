@@ -90,7 +90,7 @@
   --api-3-ready: min(1, min(1, var(--api-3-w)) + min(1, var(--api-3-h)));
   --api-4-ready: min(1, min(1, var(--api-4-w)) + min(1, var(--api-4-h)));
 }
-[class*="api-fetch-"] {
+.api-1-fetch, .api-2-fetch, .api-3-fetch, .api-4-fetch {
   position: absolute;
   visibility: hidden;
   overflow: hidden;
@@ -103,20 +103,20 @@
   text-align: left!important;
   &::before { display: inline-block; }
 }
-.api-fetch-1 { display: var(--api-fetch-1, none);
-  &::before { content: var(--api-fetch-1, none);
+.api-1-fetch { display: var(--api-1-fetch, none);
+  &::before { content: var(--api-1-fetch, none);
     view-timeline: --api-1-w inline, --api-1-h block; }
 }
-.api-fetch-2 { display: var(--api-fetch-2, none);
-  &::before { content: var(--api-fetch-2, none);
+.api-2-fetch { display: var(--api-2-fetch, none);
+  &::before { content: var(--api-2-fetch, none);
     view-timeline: --api-2-w inline, --api-2-h block; }
 }
-.api-fetch-3 { display: var(--api-fetch-3, none);
-  &::before { content: var(--api-fetch-3, none);
+.api-3-fetch { display: var(--api-3-fetch, none);
+  &::before { content: var(--api-3-fetch, none);
     view-timeline: --api-3-w inline, --api-3-h block; }
 }
-.api-fetch-4 { display: var(--api-fetch-4, none);
-  &::before { content: var(--api-fetch-4, none);
+.api-4-fetch { display: var(--api-4-fetch, none);
+  &::before { content: var(--api-4-fetch, none);
     view-timeline: --api-4-w inline, --api-4-h block; }
 }
 .api-debug-on::after {

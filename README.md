@@ -41,13 +41,13 @@ Then include `/node_modules/css-api-fetch/api-fetch.css`
 From html:
 
 ```html
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/css-api-fetch@1/api-fetch.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/css-api-fetch@3/api-fetch.css">
 ```
 
 or directly from your CSS:
 
 ```css
-@import url(https://unpkg.com/css-api-fetch@1/api-fetch.css);
+@import url(https://unpkg.com/css-api-fetch@3/api-fetch.css);
 ```
 
 ### Adding the HTML
@@ -57,12 +57,12 @@ See `./html-templates-compat.md` for instructions on the `compat` version setup 
 For the `root` version, add a single tag anywhere on the page per api you want to use:
 
 ```html
-<div class="api-fetch-1"></div>
+<div class="api-1-fetch"></div>
 ```
 
 You can save responses to `:root` from up to 4 different API requests at the same time.
 
-`api-fetch-1` `api-fetch-2` `api-fetch-3` `api-fetch-4`
+`api-1-fetch` `api-2-fetch` `api-3-fetch` `api-4-fetch`
 
 Use separate html elements for each of these, do not nest anything inside.
 
@@ -80,10 +80,10 @@ You can specify any of the API endpoints anywhere in your CSS so long as the var
 
 ```css
 body {
-  --api-fetch-1: url(https://css-api.propjockey.io/os-country.php);
-  --api-fetch-2: url(https://picsum.photos/512/256);
-  --api-fetch-3: url(https://picsum.photos/100/222);
-  --api-fetch-4: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="0px" height="99999px"></svg>');
+  --api-1-fetch: url(https://css-api.propjockey.io/os-country.php);
+  --api-2-fetch: url(https://picsum.photos/512/256);
+  --api-3-fetch: url(https://picsum.photos/100/222);
+  --api-4-fetch: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="0px" height="99999px"></svg>');
 }
 ```
 
@@ -93,10 +93,10 @@ You can easily use container style queries to conditionally use an endpoint:
 
 ```css
 @container style(--amazing-computation: 0) {
-  .api-fetch-2 { --api-fetch-2: none; }
+  .api-2-fetch { --api-2-fetch: none; }
 }
 @container style(--amazing-computation: 1) {
-  .api-fetch-2 { --api-fetch-2: url(...) }
+  .api-2-fetch { --api-2-fetch: url(...) }
 }
 ...
 ```
@@ -160,6 +160,14 @@ Additionally, there is a ready bit available for all 4 api ids that will be set 
 @property --api-3-ready { syntax: "<integer>"; inherits: true; initial-value: 0; }
 @property --api-4-ready { syntax: "<integer>"; inherits: true; initial-value: 0; }
 ```
+
+## Many Thanks
+
+[Kizu](https://front-end.social/@kizu) for [suggesting a different way to lift data to root](https://front-end.social/@kizu/113732033335417449) and for providing a firefox precision fix in the compat version.
+
+[T. Afif](https://front-end.social/@css) for [this article](https://frontendmasters.com/blog/how-to-get-the-width-height-of-any-element-in-only-css/) demonstrating the concept of using view timelines as a better way to measure and pass around element sizes instead of using my own [tan(atan2())](https://dev.to/janeori/css-type-casting-to-numeric-tanatan2-scalars-582j) approach to do it.
+
+[Bramus](https://x.com/bramus) for writing many articles on scroll and view timelines and building [amazing tools](https://scroll-driven-animations.style/tools/view-timeline/ranges/) so I could learn what I needed to make it uniquely and accurately work for this.
 
 ## Open Contact 👽
 
