@@ -3,31 +3,28 @@
 # css-api-fetch from <img src="https://github.com/user-attachments/assets/87119fb5-c39d-429a-9bfd-424f0e100720" alt="" width="30px"> PropJockey
 Make remote API Requests in CSS (Cascading Style Sheets) and store the response data in `--vars` on `:root` *without JavaScript*.
 
-## Mini vs Root or Both?
+## api-fetch.css, api-fetch-root.css, or api-fetch-compat.css?
 
 There are 3 css files you can use with different trade-offs.
 
 1) `api-fetch.css` - contains both of the following
 
-2) `api-fetch-mini.css`
+2) `api-fetch-root.css`
 
-* works in Chrome, FireFox, Safari, and on mobile
+* currently only works in Chrome
+* Response data is lifted to `:root` and can be used anywhere.
+* Up to 4 responses can be stored at the same time for use anywhere in your project.
+* Triggering the request requires specific setup but there are no limits on when you choose to initiate the requests.
+
+3) `api-fetch-compat.css`
+
+* works in Chrome, FireFox, Safari
 * Does not lift the response data to `:root`, it can only be used within the element.
 * Does not let you store more than one response at a time unless they are in sepearate elements.
 * The element that contains the response data must have a fixed width and height and can't automatically resize based on the content.
 * Overflow is hidden and can't be avoided.
 * Anything you build that uses the single response must be within the provided element.
-* Does not deconstruct the encoded responses per decimal digit for you.
 * Triggering the request is in your hands, based on however/whenever you choose to set the `url()`
-
-3) `api-fetch-root.css`
-
-* currently only works in Chrome on Desktop
-* Response data is lifted to `:root` and can be used anywhere.
-* Up to 4 responses can be stored at the same time for use anywhere in your project.
-* The encoded response data is deconstructed per decimal digit for each request.
-* Triggering the request requires specific setup but there are no limits on when you choose to initiate the requests.
-
 
 ## Installation and Setup
 
@@ -55,31 +52,54 @@ or directly from your CSS:
 
 ### Adding the HTML
 
-See `./html-templates-root.md` for instructions for the `:root` version setup.
+See `./html-templates-compat.md` for instructions on the `compat` version setup and usage.
 
-See `./html-templates-mini.md` for instructions on the `mini` version setup and usage.
+For the `root` version, add a single tag anywhere on the page per api you want to use:
 
-See both if you use `api-fetch.css` and want to use both.
+```html
+<div class="api-fetch-1"></div>
+```
+
+You can save responses to `:root` from up to 4 different API requests at the same time.
+
+`api-fetch-1` `api-fetch-2` `api-fetch-3` `api-fetch-4`
+
+Use separate html elements for each of these, do not nest anything inside.
+
+If you wish to see debug info, add this tag anywhere on the page:
+
+```html
+<div class="api-debug-on"></div>
+```
+
+Both versions, `root` and `compat`, can be used at the same time.
 
 ### Customize API endpoints in the CSS (:root version)
 
-You can save responses to `:root` from up to 4 different API requests.
-
-`api-id-1` `api-id-2` `api-id-3` `api-id-4`
-
-You can specify the corresponding endpoints in your CSS:
+You can specify any of the API endpoints anywhere in your CSS so long as the var is visible to the corresponding `api-fetch-X` tag:
 
 ```css
-@container style(--api-id: 1) {
-  .api-fetch { --api-fetch: url(https://css-api.propjockey.io/os-country.php); }
+body {
+  --api-fetch-1: url(https://css-api.propjockey.io/os-country.php);
+  --api-fetch-2: url(https://picsum.photos/512/256);
+  --api-fetch-3: url(https://picsum.photos/100/222);
+  --api-fetch-4: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="0px" height="99999px"></svg>');
 }
-@container style(--api-id: 2) {
-  .api-fetch { --api-fetch: url(https://picsum.photos/512/256); }
+```
+
+You may want to only fetch this API data in specific app state conditions.
+
+You can easily use container style queries to conditionally use an endpoint:
+
+```css
+@container style(--amazing-computation: 0) {
+  .api-fetch-2 { --api-fetch-2: none; }
+}
+@container style(--amazing-computation: 1) {
+  .api-fetch-2 { --api-fetch-2: url(...) }
 }
 ...
 ```
-
-you can add any other CSS conditions you desire, `--api-id` is the only requirement. You can also use any number of urls for a single api id but the response data will be overwritten if you send a second request to the same api-id.
 
 ## Setting up a compatible API (both versions)
 
@@ -110,66 +130,36 @@ Here, is php generating an svg that encodes the 32 bit request IP Address:
 
 Here is a live example of this in action:
 
-[![screenshot of the live demo here](https://github.com/user-attachments/assets/2248a215-cb69-4708-860c-cd1b644f6422)](https://codepen.io/propjockey/pen/pvzrWyG/f753d87ebc1dd25fb6f5d674698fb7a0?editors=1100)
+[![screenshot of the live demo here](https://github.com/user-attachments/assets/2248a215-cb69-4708-860c-cd1b644f6422)](https://codepen.io/propjockey/pen/JoPyxrK/a2aec757b3cd020a7e1bddce17ff31ed?editors=1100)
 
 
 ## Accessing the remote request's Response Data (:root version)
 
-Once a request is complete, the following set of 10 variables will be set on `:root` for each api id. They are all 0 prior to any corresponding requests.
+Once a request is complete, response data from the width and height of the image will be returned and set on root as an integer.
 
 ```css
-@property --api-1-response-0 { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@property --api-1-response-1 { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@property --api-1-response-2 { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@property --api-1-response-3 { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@property --api-1-response-4 { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@property --api-1-response-5 { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@property --api-1-response-6 { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@property --api-1-response-7 { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@property --api-1-response-8 { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@property --api-1-response-9 { syntax: "<integer>"; inherits: true; initial-value: 0; }
-...
-@property --api-2-response-0 { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@property --api-2-response-1 { syntax: "<integer>"; inherits: true; initial-value: 0; }
-...
+@property --api-1-w { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-1-h { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-2-w { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-2-h { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-3-w { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-3-h { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-4-w { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-4-h { syntax: "<integer>"; inherits: true; initial-value: 0; }
 ```
 
-the response variables hold each decimal digit of the width followed by each of the height. You can use `calc()` and other techniques to do any decoding necessary. Please reach out if you have a specific goal, there's not much that can't be done yet.
+You can use `calc()` and other techniques to do any decoding necessary. Please reach out if you have a specific goal, there's not much that can't be done yet.
 
 For example, [css-bin-bits](https://propjockey.github.io/css-bin-bits/) can help you convert 16 bit decimal numbers between decimal and binary and perform bitwise operations on the values without JS.
 
-An image returned from `api-id-3` that's `129px` wide and `65535px` tall would have the data:
+Additionally, there is a ready bit available for all 4 api ids that will be set to `1` when it has any non-0 data:
 
 ```css
---api-3-response-0: 0;
---api-3-response-1: 0;
---api-3-response-2: 1;
---api-3-response-3: 2;
---api-3-response-4: 9;
---api-3-response-5: 6;
---api-3-response-6: 5;
---api-3-response-7: 5;
---api-3-response-8: 3;
---api-3-response-9: 5;
+@property --api-1-ready { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-2-ready { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-3-ready { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-4-ready { syntax: "<integer>"; inherits: true; initial-value: 0; }
 ```
-
-Additionally, there are 2 status bits available for all 4 api ids:
-
-```css
-@property --api-1-in-progress { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@property --api-1-complete { syntax: "<integer>"; inherits: true; initial-value: 0; }
-
-@property --api-2-in-progress { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@property --api-2-complete { syntax: "<integer>"; inherits: true; initial-value: 0; }
-
-@property --api-3-in-progress { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@property --api-3-complete { syntax: "<integer>"; inherits: true; initial-value: 0; }
-
-@property --api-4-in-progress { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@property --api-4-complete { syntax: "<integer>"; inherits: true; initial-value: 0; }
-```
-
-they will both be 0 before any corresponding api requests have been triggered.
 
 ## Open Contact 👽
 

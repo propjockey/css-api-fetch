@@ -5,10 +5,10 @@ The html should be used exactly as-is unless noted otherwise.
 The html comment can be replaced with any presentation you want.
 
 ```html
-<div class="css-api-fetch-mini api-debug-mini-off">
-  <div class="api-fetch-mini">
-    <div class="api-parse-mini">
-      <div class="api-response-mini">
+<div class="css-api-fetch-compat api-debug-compat-off">
+  <div class="api-fetch-compat">
+    <div class="api-parse-compat">
+      <div class="api-response-compat">
         <!-- your presentation here -->
       </div>
     </div>
@@ -16,15 +16,15 @@ The html comment can be replaced with any presentation you want.
 </div>
 ```
 
-Adding a class name or style attribute to the outer `.css-api-fetch-mini` element is fine.
+Adding a class name or style attribute to the outer `.css-api-fetch-compat` element is fine.
 
 On that outer element, set the following variables:
 
 ```css
-.my-class-name.css-api-fetch-mini {
-  --api-height-mini: 100px;
-  --api-width-mini: 100px;
-  --api-fetch-mini: url(https://picsum.photos/512/256);
+.my-class-name.css-api-fetch-compat {
+  --api-height: 100px;
+  --api-width: 100px;
+  --api-fetch: url(https://picsum.photos/512/256);
 }
 ```
 These variables can be set higher up in DOM if that is convinient, this wrapper will inherit them.
@@ -33,17 +33,21 @@ You may also set `position` and the `inset` properties. Do not modify `width` or
 
 CSS's viewport units are fine to use here.
 
-Avoid modifying any CSS for `.api-fetch-mini`, `.api-parse-mini`, or `.api-response-mini`.
+Avoid modifying any CSS for `.api-fetch-compat`, `.api-parse-compat`, or `.api-response-compat`.
 
 Your presentation can contain any elements and styling you wish.
 
 The response data will be available to your presentation's content in these two variables:
 
-`var(--api-response-mini-w)` and `var(--api-response-mini-h)`
+`var(--api-w)` and `var(--api-h)`
 
 Each will be a value between 0 and 99,999 which is just over 16 bits.
 
-There is also a single bit flag indicating if the response has been recieved: `var(--api-response-mini-ready)`.
+There is also a single bit flag indicating if the response has been recieved: `var(--api-ready)`.
+
+Demo:
+
+https://codepen.io/propjockey/pen/EaYvdey
 
 ## Open Contact 👽
 
