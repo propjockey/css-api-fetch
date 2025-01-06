@@ -1,15 +1,15 @@
 /**
  * css-api-fetch
  * BSD 2-Clause License
- * Copyright (c) Jane Ori, PropJockey, 2024
+ * Copyright (c) Jane Ori, PropJockey, 2025
  */
 
- @property --api-w-px { syntax: "<length>"; inherits: true; initial-value: 0px; }
- @property --api-h-px { syntax: "<length>"; inherits: true; initial-value: 0px; }
- @property --api-w { syntax: "<integer>"; inherits: true; initial-value: 0; }
- @property --api-h { syntax: "<integer>"; inherits: true; initial-value: 0; }
- @property --api-ready { syntax: "<integer>"; inherits: true; initial-value: 0; }
- 
+@property --api-w-px { syntax: "<length>"; inherits: true; initial-value: 0px; }
+@property --api-h-px { syntax: "<length>"; inherits: true; initial-value: 0px; }
+@property --api-w { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-h { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-ready { syntax: "<integer>"; inherits: true; initial-value: 0; }
+
 .css-api-fetch-compat {
   --api_height: var(--api-height, 0px);
   --api_width: var(--api-width, 0px);

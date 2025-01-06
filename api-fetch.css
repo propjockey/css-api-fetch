@@ -1,14 +1,14 @@
 /**
  * css-api-fetch
  * BSD 2-Clause License
- * Copyright (c) Jane Ori, PropJockey, 2024
+ * Copyright (c) Jane Ori, PropJockey, 2025
  */
 
- @property --api-w-px { syntax: "<length>"; inherits: true; initial-value: 0px; }
- @property --api-h-px { syntax: "<length>"; inherits: true; initial-value: 0px; }
- @property --api-w { syntax: "<integer>"; inherits: true; initial-value: 0; }
- @property --api-h { syntax: "<integer>"; inherits: true; initial-value: 0; }
- @property --api-ready { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-w-px { syntax: "<length>"; inherits: true; initial-value: 0px; }
+@property --api-h-px { syntax: "<length>"; inherits: true; initial-value: 0px; }
+@property --api-w { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-h { syntax: "<integer>"; inherits: true; initial-value: 0; }
+@property --api-ready { syntax: "<integer>"; inherits: true; initial-value: 0; }
  
 .css-api-fetch-compat {
   --api_height: var(--api-height, 0px);
@@ -52,24 +52,50 @@
 
 @property --api-1-w { syntax: "<integer>"; inherits: true; initial-value: 0; }
 @property --api-1-h { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@keyframes --api-1-w-parse { 0% { --api-1-w: 99999; } 100% { --api-1-w: 0; } }
-@keyframes --api-1-h-parse { 0% { --api-1-h: 99999; } 100% { --api-1-h: 0; } }
+@keyframes --api-1-w-parse { 0% { --api-1-w: var(--api_1_max_w); } 100% { --api-1-w: 0; } }
+@keyframes --api-1-h-parse { 0% { --api-1-h: var(--api_1_max_h); } 100% { --api-1-h: 0; } }
 @property --api-2-w { syntax: "<integer>"; inherits: true; initial-value: 0; }
 @property --api-2-h { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@keyframes --api-2-w-parse { 0% { --api-2-w: 99999; } 100% { --api-2-w: 0; } }
-@keyframes --api-2-h-parse { 0% { --api-2-h: 99999; } 100% { --api-2-h: 0; } }
+@keyframes --api-2-w-parse { 0% { --api-2-w: var(--api_2_max_w); } 100% { --api-2-w: 0; } }
+@keyframes --api-2-h-parse { 0% { --api-2-h: var(--api_2_max_h); } 100% { --api-2-h: 0; } }
 @property --api-3-w { syntax: "<integer>"; inherits: true; initial-value: 0; }
 @property --api-3-h { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@keyframes --api-3-w-parse { 0% { --api-3-w: 99999; } 100% { --api-3-w: 0; } }
-@keyframes --api-3-h-parse { 0% { --api-3-h: 99999; } 100% { --api-3-h: 0; } }
+@keyframes --api-3-w-parse { 0% { --api-3-w: var(--api_3_max_w); } 100% { --api-3-w: 0; } }
+@keyframes --api-3-h-parse { 0% { --api-3-h: var(--api_3_max_h); } 100% { --api-3-h: 0; } }
 @property --api-4-w { syntax: "<integer>"; inherits: true; initial-value: 0; }
 @property --api-4-h { syntax: "<integer>"; inherits: true; initial-value: 0; }
-@keyframes --api-4-w-parse { 0% { --api-4-w: 99999; } 100% { --api-4-w: 0; } }
-@keyframes --api-4-h-parse { 0% { --api-4-h: 99999; } 100% { --api-4-h: 0; } }
+@keyframes --api-4-w-parse { 0% { --api-4-w: var(--api_4_max_w); } 100% { --api-4-w: 0; } }
+@keyframes --api-4-h-parse { 0% { --api-4-h: var(--api_4_max_h); } 100% { --api-4-h: 0; } }
 @property --api-1-ready { syntax: "<integer>"; inherits: true; initial-value: 0; }
 @property --api-2-ready { syntax: "<integer>"; inherits: true; initial-value: 0; }
 @property --api-3-ready { syntax: "<integer>"; inherits: true; initial-value: 0; }
 @property --api-4-ready { syntax: "<integer>"; inherits: true; initial-value: 0; }
+
+:where(:root) {
+  --api-max: 99999;
+  --api-max-w: initial;
+  --api-max-h: initial;
+  --api-1-max: initial;
+  --api-1-max-w: initial;
+  --api-1-max-h: initial;
+  --api-2-max: initial;
+  --api-2-max-w: initial;
+  --api-2-max-h: initial;
+  --api-3-max: initial;
+  --api-3-max-w: initial;
+  --api-3-max-h: initial;
+  --api-4-max: initial;
+  --api-4-max-w: initial;
+  --api-4-max-h: initial;
+  --api_1_max_w: var(--api-1-max-w, var(--api-1-max, var(--api-max-w, var(--api-max))));
+  --api_1_max_h: var(--api-1-max-h, var(--api-1-max, var(--api-max-h, var(--api-max))));
+  --api_2_max_w: var(--api-2-max-w, var(--api-2-max, var(--api-max-w, var(--api-max))));
+  --api_2_max_h: var(--api-2-max-h, var(--api-2-max, var(--api-max-h, var(--api-max))));
+  --api_3_max_w: var(--api-3-max-w, var(--api-3-max, var(--api-max-w, var(--api-max))));
+  --api_3_max_h: var(--api-3-max-h, var(--api-3-max, var(--api-max-h, var(--api-max))));
+  --api_4_max_w: var(--api-4-max-w, var(--api-4-max, var(--api-max-w, var(--api-max))));
+  --api_4_max_h: var(--api-4-max-h, var(--api-4-max, var(--api-max-h, var(--api-max))));
+}
 
 :root {
   timeline-scope:
@@ -94,28 +120,36 @@
   position: absolute;
   visibility: hidden;
   overflow: hidden;
-  width: 99999px;
-  height: 99999px;
-  left: -100100px;
-  top: -100100px;
+  width: calc(var(--api_X_max_w) * 1px);
+  height: calc(var(--api_X_max_h) * 1px);
+  left: calc(var(--api_X_max_w) * -1px - 101px);
+  top: calc(var(--api_X_max_h) * -1px - 101px);
   pointer-events: none;
   font-size: 0!important;
   text-align: left!important;
   &::before { display: inline-block; }
 }
 .api-1-fetch { display: var(--api-1-fetch, none);
+  --api_X_max_w: var(--api_1_max_w);
+  --api_X_max_h: var(--api_1_max_h);
   &::before { content: var(--api-1-fetch, none);
     view-timeline: --api-1-w inline, --api-1-h block; }
 }
 .api-2-fetch { display: var(--api-2-fetch, none);
+  --api_X_max_w: var(--api_2_max_w);
+  --api_X_max_h: var(--api_2_max_h);
   &::before { content: var(--api-2-fetch, none);
     view-timeline: --api-2-w inline, --api-2-h block; }
 }
 .api-3-fetch { display: var(--api-3-fetch, none);
+  --api_X_max_w: var(--api_3_max_w);
+  --api_X_max_h: var(--api_3_max_h);
   &::before { content: var(--api-3-fetch, none);
     view-timeline: --api-3-w inline, --api-3-h block; }
 }
 .api-4-fetch { display: var(--api-4-fetch, none);
+  --api_X_max_w: var(--api_4_max_w);
+  --api_X_max_h: var(--api_4_max_h);
   &::before { content: var(--api-4-fetch, none);
     view-timeline: --api-4-w inline, --api-4-h block; }
 }

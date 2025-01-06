@@ -3,6 +3,8 @@
 # css-api-fetch from <img src="https://github.com/user-attachments/assets/87119fb5-c39d-429a-9bfd-424f0e100720" alt="" width="30px"> PropJockey
 Make remote API Requests in CSS (Cascading Style Sheets) and store the response data in `--vars` on `:root` *without JavaScript*.
 
+Curious *how* this works? [Read about it here!](https://dev.to/janeori/getting-your-ip-address-with-css-and-other-32-bit-api-responses-without-javascript-402h)
+
 ## api-fetch.css, api-fetch-root.css, or api-fetch-compat.css?
 
 There are 3 css files you can use with different trade-offs.
@@ -101,13 +103,43 @@ You can easily use container style queries to conditionally use an endpoint:
 ...
 ```
 
+### Customize API Response maximum values (root version)
+
+Added in v 3.1.0 - no functionality changes unless you set these.
+
+In the `root` version, you can configure the maximum response size by setting a variable on `:root`:
+
+`:root { --api-1-max-w: <integer>; }` // maximum width returned from api 1
+
+`:root { --api-4-max-h: <integer>; }` // maximum height returned from api 4
+
+You can be less specific and specify both height and width at once:
+
+`:root { --api-2-max: <integer>; }` // maximum height and width returned from api 2
+
+You can be even less specific and specify a maximum height OR width for all api results:
+
+`:root { --api-max-w: <integer>; }` // maximum width returned from all apis
+
+`:root { --api-max-h: <integer>; }` // maximum height returned from all apis
+
+You can be as non-specific as possible and specify the maximum for height AND width of all api responses:
+
+`:root { --api-max: <integer>; }` // maximum height and width returned from all APIs.
+
+Higher specificity overrides lower specificity.
+
+The default is the lowest specificity, and you can set it to whatever you want:
+
+`:root { --api-max: 99999; }`
+
 ## Setting up a compatible API (both versions)
 
 `css-api-fetch` expects an image response with the response data encoded into the height and width.
 
-The maximum width is `99999px` which is more than 16 bits of data.
+Unless overwritten within the `:root` version, the maximum width in both versions is `99999px` which is more than 16 bits of data.
 
-The maximum height is also `99999px` which is more than 32 bits of data total.
+Unless overwritten within the `:root` version, the maximum height in both versions is also `99999px` which is more than 32 bits of data total.
 
 ### For example, getting the user's IP Address with CSS
 
